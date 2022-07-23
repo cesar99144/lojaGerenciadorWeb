@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+}
+
+header{
+
+    /* border: 1px solid; */
+    /* width: 100%; */
+    background-color: #961517;
+    padding: 15px;
+    /* padding-top: 0px !important; */
+    padding-left: 30px;
+    padding-right: 30px;
+    /* height: 60px; */
+    display: flex !important;
+    justify-content: space-between !important;
+
+}
+
+#listaMenu{
+
+    /* border: 1px solid; */
+    
+}
+
+#listaMenu li{
+
+    display: inline;
+    text-decoration: none;
+    margin-left: 20px;
+    
+}
+
+#listaMenu li > a{
+
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    
+}
+
+.itemAtivo{
+
+    color: orange !important;
+}
+
+#logo-cliente{
+    max-width: 100%;
+    margin: auto;
+    width: 80px;  
+    height: 40px;  
+}
+
+#conteudo{
+
+    margin-left: 5%;
+    margin-right: 5%;
+}

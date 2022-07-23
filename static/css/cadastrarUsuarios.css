@@ -1,0 +1,40 @@
+.container-pagina{
+
+    width: 65% !important;
+    margin: auto !important;
+    /* border: 1px solid; */
+    margin-top: 30px !important;
+}
+
+.tituloPagina{
+
+    
+}
+
+.lista_usuarios{
+
+    /* border: 1px solid; */
+}
+
+.container-input{
+
+    width: 100%;
+}
+
+.container-input > label{
+
+    margin-bottom: 10px;
+}
+
+#listaCheckBox{
+
+    /* display: inline; */
+    margin-top: 30px;
+    padding-left: 0px !important;
+}
+
+#listaCheckBox li{
+
+    display: inline;
+    margin-left: 15px;
+}
