@@ -1,0 +1,60 @@
+@font-face {
+    font-family: NunitoExtrabold;
+    src: url(../fonts/nunito/Nunito-ExtraBold.ttf)
+}
+
+
+*{
+    margin: 0px;
+}
+
+body{
+
+    background: #e1ecf2;
+}
+
+header{
+
+    background: -webkit-linear-gradient(left, #9c1d1c, #c0392b);
+    height: 50px;
+}
+
+#subNavMenu{
+
+    background-color: #FFF;
+    padding: 15px;
+}
+
+#listaMenu li{
+
+    display: inline;
+    text-decoration: none;
+    margin-left: 20px;
+    
+}
+
+#listaMenu li > a{
+
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: NunitoExtrabold;
+    
+}
+
+.itemAtivo{
+
+    /* color: #c0392b !important; */
+    color: #9c1d1c !important;
+}
+
+#conteudo{
+
+    /* border: 1px solid; */
+}
+
+.sessao-pagina{
+
+    background-color: #FFF !important;
+    padding: 20px;
+}
