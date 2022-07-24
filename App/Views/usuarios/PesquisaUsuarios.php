@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/solid.css">
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/svg-with-js.css">
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/v4-shims.css">
-    <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/listagemUsuarios.css">
+    <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css/listagemUsuarios.css">
 
     <style>
       table {
@@ -36,7 +36,7 @@
   <body>
     <script src="static/js/jquery.js"></script>
     <div>
-      <div id="lista_usuarios" class="w3-margin">
+      <div id="lista_usuarios" class="w3-margin sessao-pagina">
         <input class="w3-input w3-border w3-margin-top" type="text" placeholder="Nome">
         <button class="w3-button w3-theme w3-margin-top">Buscar</button>
         <a href="<?php echo URL_BASE; ?>usuarios/new" class="w3-button w3-theme w3-margin-top w3-right">Cadastrar novo usuário</a>
