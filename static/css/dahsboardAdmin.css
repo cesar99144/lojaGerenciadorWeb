@@ -17,6 +17,17 @@ header{
 
     background: -webkit-linear-gradient(left, #9c1d1c, #c0392b);
     height: 50px;
+    padding-left: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#nomeEmpresaArea{
+
+    font-family: NunitoExtrabold;
+    color: white;
+    padding: 10px;
+    font-size: 16pt;
 }
 
 #subNavMenu{
