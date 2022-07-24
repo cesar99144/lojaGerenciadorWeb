@@ -11,12 +11,17 @@
     </head>
     <body>
         <header>
-          dasfas
+            <div id="nomeEmpresaArea">
+                Nome empresa
+            </div>
+            <div>
+                PEssoa
+            </div>
         </header>
         <nav id="subNavMenu">
             <ul id="listaMenu">
-                <li><a class="itemAtivo" href="<?php echo URL_BASE; ?>usuarios"><i class='bx bxs-user'></i> Usuários</a></li>
-                <li><a href=""><i class='bx bxs-user-account'></i> Clientes</a></li>
+                <li><a href="<?php echo URL_BASE; ?>usuarios"><i class='bx bxs-user'></i> Usuários</a></li>
+                <li><a class="itemAtivo" href=""><i class='bx bxs-user-account'></i> Clientes</a></li>
                 <li><a class="" href=""><i class='bx bxs-package'></i> Produtos</a></li>
                 <li><a class="" href=""><i class='bx bxs-basket'></i> Fornecedores</a></li>
             </ul>
