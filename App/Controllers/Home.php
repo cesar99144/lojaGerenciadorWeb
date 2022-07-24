@@ -9,4 +9,9 @@ class Home extends BaseControllers{
         return $this->view('login');
     }
 
+    public function dash(){
+
+        return $this->view('dashboardBase');
+    }
+
 }
