@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css/w3.css">
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css/santri.css">
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css/toastr.css">
+    <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css/usuarios.css">
 
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/brands.css">
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/fontawesome.css">
@@ -40,17 +41,31 @@
 
   </head>
   <body>
-    <script src="static/js/jquery.js"></script>
-
+  
     <div id="login">
-      <img id="logo-cliente" class="w3-margin-top" src="static/imagens/logo_cliente.jpg"/>
-      <input class="w3-input w3-border w3-margin-top" type="text" placeholder="Usuário">
-      <input class="w3-input w3-border w3-margin-top" type="password" placeholder="Senha">
-      <a href="<?php echo URL_BASE; ?>Usuarios/index" class="w3-button w3-theme w3-margin-top w3-block">Logar</a>
-      
+      <form action="<?php echo URL_BASE; ?>usuarios/login" method="POST">
+          <img id="logo-cliente" class="w3-margin-top" src="<?php echo URL_BASE; ?>static/imagens/logo_cliente.jpg"/>
+          <?php 
+            //Exibe mensagens de validação para o usuário
+            if(!empty($data['mensagem'])):
+
+              foreach($data['mensagem'] as $m):
+                  echo "<div id='areaRetorno'>".$m."</div>"."<br>";
+              endforeach;
+
+            endif;
+
+          ?>
+          <input class="w3-input w3-border w3-margin-top" name="userLogin" id="nomeUser" type="text" placeholder="Usuário">
+          <input class="w3-input w3-border w3-margin-top" name="userSenha" id="senhaUser" type="password" placeholder="Senha">
+          <button type="submit" class="w3-button w3-theme w3-margin-top w3-block">Logar</button>
+      </form>
       <a href="http://www.santri.com.br">
-        <img id="logo-santri" class="w3-right w3-margin-top" src="static/imagens/logo_santri.svg"/>
+        <img id="logo-santri" class="w3-right w3-margin-top" src="<?php echo URL_BASE; ?>static/imagens/logo_santri.svg"/>
       </a>
+
+      <script src="<?php echo URL_BASE; ?>static/js/jquery.js"></script>
+      <script src="<?php echo URL_BASE; ?>static/js/usuarios.js"></script>
     </div>
   </body>
 </html>
