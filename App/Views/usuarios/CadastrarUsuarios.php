@@ -18,12 +18,14 @@
   <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/solid.css">
   <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/svg-with-js.css">
   <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/v4-shims.css">
+  <!-- Toasts -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </head>
 
 <body>
-  <script src="<?php echo URL_BASE; ?>static/js/jquery.js"></script>
-
+  
     <div id="lista_usuarios" class="w3-margin sessao-pagina">
 
       <div class="topoDadosPagina">
@@ -36,19 +38,20 @@
       </div>
 
       <div class="w3-row area-inputs">
+        <!-- <form action="<?php echo URL_BASE; ?>usuarios/create" method="POST"> -->
           <div class="container-input w3-margin-top">
             <label>Nome</label>
-            <input type="text" class="w3-input w3-block w3-border">
+            <input type="text" name="nomeUser" id="nomeUsuario" class="w3-input w3-block w3-border">
           </div>&nbsp;&nbsp;&nbsp;
 
           <div class="container-input w3-margin-top">
             <label>Login</label><br>
-            <input type="text" class="w3-input w3-block w3-border">
+            <input type="text" id="nomeLoginUser" name="loginUser" class="w3-input w3-block w3-border">
           </div>&nbsp;&nbsp;&nbsp;
 
           <div class="w3-margin-top">
             <label>Senha</label><br>
-            <input type="text" class="w3-input w3-block w3-border">
+            <input type="text" id="senhaUsuario" name="senhaUser" class="w3-input w3-block w3-border">
           </div>&nbsp;&nbsp;&nbsp;
       </div>
 
@@ -56,23 +59,44 @@
           <div class="container-select w3-margin-top">
             <label>Ativo</label><br>
             <!-- <input type="text" class="w3-input w3-block w3-border "> -->
-            <select class="w3-input w3-block w3-border" name="" id="">
-              <option value="">Sim</option>
-              <option value="">Não</option>
+            <select class="w3-input w3-block w3-border" name="statusUser" id="ativoUsuario">
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
             </select>
           </div>
           <ul id="listaCheckBox" class="areaChecks">
-            <li id="opt_cadastrar_clientes"><input type="checkbox" checked value="cadastrar_clientes"> <label>Cadastrar clientes</label></li>
-            <li id="opt_excluir_clientes"><input type="checkbox" value="excluir_clientes"> <label>Excluir clientes</label></li>
-            <li id="opt_mais"><input type="checkbox" value="mais"> <label>E assim sucessivamente</label></li>
+            <li id="opt_cadastrar_clientes">
+              <input type="checkbox" id="checkClientes" checked value="cadastrar_clientes"> 
+              <label for="checkClientes">Cadastrar clientes</label>
+            </li>
+            <li id="opt_excluir_clientes">
+              <input type="checkbox" id="checkDeleteClientes" value="excluir_clientes"> 
+              <label for="checkDeleteClientes">Excluir clientes</label>
+            </li>
+            <li id="opt_mais">
+              <input type="checkbox" id="checkCadastrarFornecedores" value="cadastrar_fornecedores"> 
+              <label for="checkCadastrarFornecedores">Cadastrar fornecedores</label>
+            </li>
+            <li id="opt_mais">
+              <input type="checkbox" id="checkCadastrarProdutos" value="cadastrar_produtos"> 
+              <label for="checkCadastrarProdutos">Cadastrar produtos</label>
+            </li>
+            <li id="opt_mais">
+              <input type="checkbox" id="checkAlterarPrecoProdutos" value="alterar_preco_produto"> 
+              <label for="checkAlterarPrecoProdutos">Alterar preço de produto</label>
+            </li>
           </ul>
       </div>
 
       <div class="w3-row area-inputs w3-margin-top">
-          <button class="w3-button w3-theme w3-margin-top w3-margin-bottom">Gravar</button>
+          <button type="button" onclick="cadastrarUsuarios()" class="w3-button w3-theme w3-margin-top w3-margin-bottom">Gravar</button>
           &nbsp;&nbsp;<a href="<?php echo URL_BASE; ?>usuarios" class="w3-button w3-margin-top w3-margin-bottom w3-right">Cancelar</a>
       </div>
+      <!-- </form> -->
   </div>
+
+  <script src="<?php echo URL_BASE; ?>static/js/jquery.js"></script>
+  <script src="<?php echo URL_BASE; ?>static/js/usuarios.js"></script>
 </body>
 
 </html>
