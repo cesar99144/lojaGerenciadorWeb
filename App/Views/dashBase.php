@@ -24,7 +24,7 @@
                 </ul>
             </div>
             <div>
-                Logout
+                <label for="">Olá, <?php echo $_SESSION['userNome']; ?></label>
             </div>
         </header>
         <section id="conteudo">
