@@ -14,7 +14,7 @@ class BaseControllers{
     }
 
 	public function viewDash($view, $data = []) {
-        require_once 'App/Views/dashBase.php';
+        require_once 'App/Views/dashboardBase.php';
     }
 
 
