@@ -66,24 +66,28 @@
           </div>
           <ul id="listaCheckBox" class="areaChecks">
             <li id="opt_cadastrar_clientes">
-              <input type="checkbox" id="checkClientes" checked value="cadastrar_clientes"> 
-              <label for="checkClientes">Cadastrar clientes</label>
+              <input type="checkbox" class="checkOpcao" id="cadastrar_clientes" name="checkOpcao[]" value="cadastrar_clientes"> 
+              <label for="cadastrar_clientes">Cadastrar clientes</label>
             </li>
             <li id="opt_excluir_clientes">
-              <input type="checkbox" id="checkDeleteClientes" value="excluir_clientes"> 
-              <label for="checkDeleteClientes">Excluir clientes</label>
+              <input type="checkbox" class="checkOpcao" id="excluir_clientes" name="checkOpcao[]" value="excluir_clientes"> 
+              <label for="excluir_clientes">Excluir clientes</label>
             </li>
             <li id="opt_mais">
-              <input type="checkbox" id="checkCadastrarFornecedores" value="cadastrar_fornecedores"> 
-              <label for="checkCadastrarFornecedores">Cadastrar fornecedores</label>
+              <input type="checkbox" class="checkOpcao" id="cadastrar_fornecedores" name="checkOpcao[]" value="cadastrar_fornecedores"> 
+              <label for="cadastrar_fornecedores">Cadastrar fornecedores</label>
             </li>
             <li id="opt_mais">
-              <input type="checkbox" id="checkCadastrarProdutos" value="cadastrar_produtos"> 
-              <label for="checkCadastrarProdutos">Cadastrar produtos</label>
+              <input type="checkbox" class="checkOpcao" id="excluir_fornecedores" name="checkOpcao[]" value="excluir_fornecedores"> 
+              <label for="excluir_fornecedores">Excluir fornecedores</label>
             </li>
             <li id="opt_mais">
-              <input type="checkbox" id="checkAlterarPrecoProdutos" value="alterar_preco_produto"> 
-              <label for="checkAlterarPrecoProdutos">Alterar preço de produto</label>
+              <input type="checkbox" class="checkOpcao" id="cadastrar_produtos" name="checkOpcao[]" value="cadastrar_produtos"> 
+              <label for="cadastrar_produtos">Cadastrar produtos</label>
+            </li>
+            <li id="opt_mais">
+              <input type="checkbox" class="checkOpcao" id="alterar_preco_produtos" name="checkOpcao[]" value="alterar_preco_produto"> 
+              <label for="alterar_preco_produtos">Alterar preço de produto</label>
             </li>
           </ul>
       </div>
@@ -93,6 +97,8 @@
           &nbsp;&nbsp;<a href="<?php echo URL_BASE; ?>usuarios" class="w3-button w3-margin-top w3-margin-bottom w3-right">Cancelar</a>
       </div>
       <!-- </form> -->
+
+      <button onclick="gerarArrayChecks()">Gerar</button>
   </div>
 
   <script src="<?php echo URL_BASE; ?>static/js/jquery.js"></script>

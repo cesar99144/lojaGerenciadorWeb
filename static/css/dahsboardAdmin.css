@@ -18,8 +18,8 @@ header{
     background: -webkit-linear-gradient(left, #9c1d1c, #c0392b);
     height: 50px;
     padding-left: 40px;
-    display: flex;
-    justify-content: space-between;
+    display: flex !important;
+    justify-content: space-between !important;
 }
 
 #nomeEmpresaArea{

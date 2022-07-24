@@ -1,3 +1,27 @@
+// var checados = [];
+
+function gerarArrayChecks(){
+
+    var checados = [];
+
+    // $(document).ready(function() {
+    //     $(".checkOpcao").click(function(e) {
+    //         $.each($("input[name='checkOpcao[]']:checked"), function(){            
+    //             checados.push($(this).val());
+    //         });
+    //     });
+    // });
+
+    $("input:checked").each(function(){
+        // console.log($(this).attr("id"));
+        checados.push($(this).attr("id"));
+    });
+
+    // console.log(checados);
+
+    return checados;
+}
+
 function cadastrarUsuarios(){
 
     var nome = document.getElementById("nomeUsuario").value;
@@ -5,12 +29,11 @@ function cadastrarUsuarios(){
     var senhaUsuario = document.getElementById("senhaUsuario").value;
     var ativoUsuario = document.getElementById("ativoUsuario").value;
 
-    // var tipoPessoa;
-    var checkedCadastrarClientes = $('#checkClientes').is(':checked');
-    var checkDeleteClientes = $('#checkDeleteClientes').is(':checked');
-    var checkCadastrarFornecedores = $('#checkCadastrarFornecedores').is(':checked');
-    var checkCadastrarProdutos = $('#checkCadastrarProdutos').is(':checked');
-    var checkAlterarPrecoProdutos = $('#checkAlterarPrecoProdutos').is(':checked');
+    var opcoesMarcadas = gerarArrayChecks();
+
+    console.log(opcoesMarcadas);
+
+    // console.log(checados);
 
     $.ajax({
         url: "/usuarios/create",
@@ -20,11 +43,7 @@ function cadastrarUsuarios(){
             loginUser: nomeLogin,
             senhaUser: senhaUsuario,
             statusUser: ativoUsuario,
-            checkCadastroCliente: checkedCadastrarClientes,
-            checkDeleteClientes: checkDeleteClientes,
-            checkCadastrarFornecedores: checkCadastrarFornecedores,
-            checkCadastrarProdutos: checkCadastrarProdutos,
-            checkAlterarPrecoProdutos: checkAlterarPrecoProdutos
+            opcoesMarcadas
             
         },
         success:function(response){
@@ -47,6 +66,8 @@ function cadastrarUsuarios(){
                         onClick: function(){} // Callback after click
                     }).showToast();
 
+                    limparCampos();
+
                 break;
 
                 case "Erro":
@@ -66,10 +87,29 @@ function cadastrarUsuarios(){
                     }).showToast();
 
                 break;
+
+                default:
+
+                    alert(response)
+
             }
         },
         error: function(response) {
             alert("erro")
         },
     });
+}
+
+function limparCampos(){
+
+    document.getElementById("nomeUsuario").value = "";
+    document.getElementById("nomeLoginUser").value = "";
+    document.getElementById("senhaUsuario").value = "";
+    document.getElementById("ativoUsuario").value = "";
+
+    const clist = document.getElementsByTagName("input");
+
+    for (const el of clist) {
+        el.checked = false;
+    }
 }

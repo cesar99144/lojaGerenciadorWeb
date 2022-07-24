@@ -28,6 +28,7 @@ class Usuarios extends BaseControllers{
 
         $usuarios = $this->model('usuario');
         $usuariosDao = $this->model('usuariosDao');
+        $permissoesDao = $this->model('PermissoesDao');
 
         $usuarios->setNomeCompleto($_POST['nomeUser']);
         $usuarios->setLogin($_POST['loginUser']);
@@ -36,8 +37,26 @@ class Usuarios extends BaseControllers{
 
         $salvarUsuario = $usuariosDao->cadastrarUsuario($usuarios);
 
-        //Após cadastrar os dados do usuário, é salvo as permissões
+        //Permissões estasticas
+        $dataPermissoes = [
+            'cadastrar_clientes',
+            'excluir_clientes',
+            'cadastrar_fornecedores',
+            'excluir_fornecedores',
+            'cadastrar_produtos',
+            'alterar_preco_produtos'
+        ];
+
+        $idUser = $usuariosDao->getIdUsuario($_POST['loginUser']);
+
+        $arrayPermissoes = $_POST['opcoesMarcadas'];
         
+        //Após cadastrar os dados do usuário, é salvo as permissões
+        for($i = 0; $i < count($arrayPermissoes); $i++){
+
+            $permissoesDao->cadastrarPermissao($idUser, $arrayPermissoes[$i]);
+        }
+
         echo $salvarUsuario;
     }
 
