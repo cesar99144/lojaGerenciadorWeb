@@ -53,10 +53,10 @@ https://www.php.net/manual/pt_BR/features.commandline.webserver.php
 
 ## Screenshots
 
-<img src="static/imagensProjetos/Clientes.PNG" alt="drawing">
-<img src="static/imagensProjetos/Produtos.PNG" alt="drawing">
-<img src="static/imagensProjetos/Fornecedores.PNG" alt="drawing">
-<img src="static/imagensProjetos/CadastroClientes.PNG" alt="drawing">
-<img src="static/imagensProjetos/CadastroUsers.PNG" alt="drawing">
-<img src="static/imagensProjetos/CadastroProdutos.PNG" alt="drawing">
+<img src="static/imagensProjeto/Clientes.PNG" alt="drawing">
+<img src="static/imagensProjeto/Produtos.PNG" alt="drawing">
+<img src="static/imagensProjeto/Fornecedores.PNG" alt="drawing">
+<img src="static/imagensProjeto/CadastroClientes.PNG" alt="drawing">
+<img src="static/imagensProjeto/CadastroUsers.PNG" alt="drawing">
+<img src="static/imagensProjeto/CadastroProdutos.PNG" alt="drawing">
 
