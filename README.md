@@ -50,6 +50,7 @@ alterando o define("URL_BASE","http://localhost:8080/"); para a url que deseja. 
 
 https://www.php.net/manual/pt_BR/features.commandline.webserver.php
 
+Qualquer dúvida quanto a instalação e demais assuntos estou a disposição
 
 
 ## Screenshots
