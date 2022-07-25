@@ -1,13 +1,22 @@
 <?php
 
 use App\Core\BaseControllers;
+use App\Auth;
 
 class Produtos extends BaseControllers{
+
+    protected $auth;
+    
+    public function __construct(){
+        
+        $this->auth = new Auth();
+        $this->auth->checkLogin();
+    }
 
     public function index(){
 
         $this->viewDash('produtos/listagemProdutos');
-
+        
     }
 
     public function new(){

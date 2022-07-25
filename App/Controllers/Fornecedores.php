@@ -10,6 +10,7 @@ class Fornecedores extends BaseControllers{
     public function __construct(){
         
         $this->auth = new Auth();
+        $this->auth->checkLogin();
     } 
 
     public function index(){
