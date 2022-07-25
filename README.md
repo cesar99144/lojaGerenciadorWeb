@@ -11,6 +11,7 @@ Projeto de exemplo de uma loja virtual
 - Cadastro de produtos
 - Cadastro de fornecedores
 - Controle de permissões funcionando
+- Login e controle de acesso funcionais
 
 ## Stack utilizada
 
