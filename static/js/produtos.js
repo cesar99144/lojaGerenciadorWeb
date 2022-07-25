@@ -1,49 +1,17 @@
-// var checados = [];
+function cadastrarProduto(){
 
-function gerarArrayChecks(){
+    var nome = document.getElementById("nomeProduto").value;
+    var estoque = document.getElementById("estoqueProduto").value;
+    var preco = document.getElementById("precoProduto").value;
 
-    var checados = [];
-
-    // $(document).ready(function() {
-    //     $(".checkOpcao").click(function(e) {
-    //         $.each($("input[name='checkOpcao[]']:checked"), function(){            
-    //             checados.push($(this).val());
-    //         });
-    //     });
-    // });
-
-    $("input:checked").each(function(){
-        // console.log($(this).attr("id"));
-        checados.push($(this).attr("id"));
-    });
-
-    // console.log(checados);
-
-    return checados;
-}
-
-function cadastrarUsuarios(){
-
-    var nome = document.getElementById("nomeUsuario").value;
-    var nomeLogin = document.getElementById("nomeLoginUser").value;
-    var senhaUsuario = document.getElementById("senhaUsuario").value;
-    var ativoUsuario = document.getElementById("ativoUsuario").value;
-
-    var opcoesMarcadas = gerarArrayChecks();
-
-    console.log(opcoesMarcadas);
-
-    // console.log(checados);
-
+    alert(estoque)
     $.ajax({
-        url: "/usuarios/create",
+        url: "/produtos/create",
         type:"POST",
         data:{
-            nomeUser: nome,
-            loginUser: nomeLogin,
-            senhaUser: senhaUsuario,
-            statusUser: ativoUsuario,
-            opcoesMarcadas
+            nomeProduto: nome,
+            estoqueProduto: estoque,
+            precoProduto: preco,
             
         },
         success:function(response){
@@ -102,44 +70,31 @@ function cadastrarUsuarios(){
 
 function limparCampos(){
 
-    document.getElementById("nomeUsuario").value = "";
-    document.getElementById("nomeLoginUser").value = "";
-    document.getElementById("senhaUsuario").value = "";
+    document.getElementById("nomeProduto").value = "";
+    document.getElementById("estoqueProduto").value = "";
+    document.getElementById("precoProduto").value = "";
 
-    const clist = document.getElementsByTagName("input");
-
-    for (const el of clist) {
-        el.checked = false;
-    }
 }
 
-function carregarListaUsuarios(){
+function carregarListaProdutos(){
 
     $.ajax({
-        url: "/usuarios/listaTodosUsuarios",
+        url: "/produtos/listarProdutos",
         type:"GET",
 
         success:function(response){
 
-            limparLista();
-
             dados = JSON.parse(response);
+
+            limparLista();
 
             for(var i = 0; i < dados.length; i++){
 
-                var ativo;
-
-                if(dados[i].ATIVO == 'S'){
-
-                    ativo = "Sim";
-
-                }else{
-
-                    ativo = "Não";
-                }
+                var preco = parseFloat(dados[i].preco);
+                var estoque = parseFloat(dados[i].estoque);
 
                 var $wrapper = document.querySelector('#containerDadosTable');
-                var trLista = '<tr class="itemLista"><td>'+dados[i].NOME_COMPLETO+'</td><td>'+dados[i].LOGIN+'</td><td>'+ativo+'</td><td><button onclick="deleteUsuario('+dados[i].USUARIO_ID+')" class="w3-button w3-theme w3-margin-top"><i class="fas fa-user-times"></i></button>&nbsp;</td></tr>';
+                var trLista = '<tr class="itemLista"><td>'+dados[i].nome+'</td><td>'+estoque.toFixed(2)+'</td><td>'+preco.toFixed(2)+'</td><td>&nbsp;&nbsp;<a href="/produtos/edit/'+dados[i].idProduto+'" class="w3-button w3-theme w3-margin-top"><i class="fas fa-edit"></i></a></td></tr>';
                 
                 // Insere o texto antes do conteúdo atual do elemento
                 $wrapper.insertAdjacentHTML('afterbegin', trLista);
@@ -161,12 +116,23 @@ function limparLista(){
     }
 }
 
-function deleteUsuario(id){
+function atualizarProduto(){
+
+    var id = document.getElementById("codigoProduto").value;
+
+    var nome = document.getElementById("nomeProduto").value;
+    var estoque = document.getElementById("estoqueProduto").value;
+    var preco = document.getElementById("precoProduto").value;
 
     $.ajax({
-        url: "/usuarios/delete/"+id,
-        type:"GET",
-
+        url: "/produtos/update/"+id,
+        type:"POST",
+        data:{
+            nomeProduto: nome,
+            estoqueProduto: estoque,
+            precoProduto: preco,
+            
+        },
         success:function(response){
 
             switch(response){
@@ -174,7 +140,7 @@ function deleteUsuario(id){
                 case "Sucesso":
 
                     Toastify({
-                        text: "Deletado com sucesso",
+                        text: "Atualizado com sucesso",
                         destination: "",
                         newWindow: true,
                         gravity: "top", // `top` or `bottom`
@@ -187,14 +153,13 @@ function deleteUsuario(id){
                         onClick: function(){} // Callback after click
                     }).showToast();
 
-                    carregarListaUsuarios()
 
                 break;
 
                 case "Erro":
 
                     Toastify({
-                        text: "Falha ao excluir, verifique e tente novamente",
+                        text: "Falha no cadastro, verifique os dados e tente novamente",
                         destination: "",
                         newWindow: true,
                         gravity: "top", // `top` or `bottom`
@@ -202,25 +167,7 @@ function deleteUsuario(id){
                         stopOnFocus: true, // Prevents dismissing of toast on hover
                         // className: "info",
                         style: {
-                        background: "linear-gradient(to right, red, red)",
-                        },
-                        onClick: function(){} // Callback after click
-                    }).showToast();
-
-                break;
-
-                case "SemPermissao":
-
-                    Toastify({
-                        text: "Usuário sem permissão para deletar",
-                        destination: "",
-                        newWindow: true,
-                        gravity: "top", // `top` or `bottom`
-                        position: "center", // `left`, `center` or `right`
-                        stopOnFocus: true, // Prevents dismissing of toast on hover
-                        // className: "info",
-                        style: {
-                        background: "linear-gradient(to right, red, red)",
+                        background: "linear-gradient(to right, green, green)",
                         },
                         onClick: function(){} // Callback after click
                     }).showToast();
@@ -230,23 +177,11 @@ function deleteUsuario(id){
                 default:
 
                     alert(response)
+
             }
-            
         },
         error: function(response) {
             alert("erro")
         },
     });
 }
-
-//Pesquisar dados table
-var filtro = document.getElementById('filtraDados');
-var tabela = document.getElementById('lista');
-filtro.onkeyup = function() {
-    var nomeFiltro = filtro.value;
-    for (var i = 1; i < tabela.rows.length; i++) {
-        var conteudoCelula = tabela.rows[i].cells[0].innerText;
-        var corresponde = conteudoCelula.toLowerCase().indexOf(nomeFiltro) >= 0;
-        tabela.rows[i].style.display = corresponde ? '' : 'none';
-    }
-};

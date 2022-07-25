@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/svg-with-js.css">
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css-awesome/v4-shims.css">
     <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css/listagemUsuarios.css">
+    <link rel="stylesheet" href="<?php echo URL_BASE; ?>static/css/listagemClientes.css">
  <!-- Toasts -->
  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -36,17 +37,20 @@
     </style>
 
   </head>
-  <body onload="carregarListaUsuarios()">
+  <body onload="carregarListaClientes()">
     
     <div>
       <div id="lista_usuarios" class="w3-margin sessao-pagina">
+        <div class="topoDadosPagina">
+            <h4 class="tituloPagina">Lista clientes</h4>
+        </div>
         <div id="areaTopoPagina">
           <div id="areaPesquisa">
             <input id="filtraDados" class="w3-input w3-border w3-margin-top" type="text" placeholder="Nome">
             &nbsp;<button class="w3-button w3-theme w3-margin-top">Buscar</button>
           </div>
           <div>
-            <a href="<?php echo URL_BASE; ?>usuarios/new" class="w3-button w3-theme w3-margin-top w3-right">Cadastrar novo usuário</a>
+            <a href="<?php echo URL_BASE; ?>clientes/new" class="w3-button w3-theme w3-margin-top w3-right">Cadastrar novo cliente</a>
           </div>
         </div>
         
@@ -54,8 +58,9 @@
           <thead>
             <tr>
               <th>Nome</td>
-              <th>Login</td>
-              <th>Ativo</td>
+              <th>Celular</td>
+              <th>Email</td>
+              <th>Endereço</td>
               <th>Opções</td>  
             </tr>
           </thead>
@@ -64,12 +69,13 @@
               <td>Maria Moraes</td>
               <td>MARIA</td>
               <td>Sim</td>
+              <td>Sim</td>
               <td>
                 <button class="w3-button w3-theme w3-margin-top"><i class="fas fa-user-times"></i></button>
                 <button class="w3-button w3-theme w3-margin-top"><i class="fas fa-edit"></i></button>
               </td>
-            </tr>
-
+            </tr> -->
+            <!--
             <tr>
               <td>João da Silva</td>
               <td>JOAO</td>
@@ -86,6 +92,6 @@
     </div>
 
     <script src="<?php echo URL_BASE; ?>static/js/jquery.js"></script>
-    <script src="<?php echo URL_BASE; ?>static/js/usuarios.js"></script>
+    <script src="<?php echo URL_BASE; ?>static/js/clientes.js"></script>
   </body>
 </html>

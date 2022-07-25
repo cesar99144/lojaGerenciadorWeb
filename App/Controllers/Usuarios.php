@@ -7,11 +7,13 @@ class Usuarios extends BaseControllers{
 
     protected $ModelUsuariosDao;
     protected $ModelUsuarios;
+    protected $auth;
 
     public function __construct(){
         
         $this->modelUsuariosDao = $this->model('UsuariosDao');
         $this->modelUsuarios = $this->model('Usuario');
+        $this->auth = new Auth();
     }
 
     public function index(){
@@ -84,6 +86,21 @@ class Usuarios extends BaseControllers{
 		endif;
 
         // $this->view('home/index');
+    }
+
+    public function delete($id){
+
+
+        $usuariosDao = $this->model('usuariosDao');
+        $deletarUsuario = $usuariosDao->deletarUsuario($id);
+
+        echo $deletarUsuario;
+
+    }
+
+    public function logout(){
+
+        Auth::logout();
     }
 
     public function listaTodosUsuarios(){

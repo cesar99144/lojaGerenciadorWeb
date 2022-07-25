@@ -84,7 +84,7 @@
             <li id="opt_mais">
               <input type="checkbox" class="checkOpcao" id="cadastrar_produtos" name="checkOpcao[]" value="cadastrar_produtos"> 
               <label for="cadastrar_produtos">Cadastrar produtos</label>
-            </li>
+            </li><br>
             <li id="opt_mais">
               <input type="checkbox" class="checkOpcao" id="alterar_preco_produtos" name="checkOpcao[]" value="alterar_preco_produto"> 
               <label for="alterar_preco_produtos">Alterar preço de produto</label>
@@ -97,8 +97,6 @@
           &nbsp;&nbsp;<a href="<?php echo URL_BASE; ?>usuarios" class="w3-button w3-margin-top w3-margin-bottom w3-right">Cancelar</a>
       </div>
       <!-- </form> -->
-
-      <button onclick="gerarArrayChecks()">Gerar</button>
   </div>
 
   <script src="<?php echo URL_BASE; ?>static/js/jquery.js"></script>

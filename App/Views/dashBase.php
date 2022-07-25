@@ -30,5 +30,7 @@
         <section id="conteudo">
             <?php require_once 'App/Views/'.$view.'.php'; ?>
         </section>
+
+        
     </body>
 </html>

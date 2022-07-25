@@ -21,4 +21,19 @@ class PermissoesDao extends Conexao{
         }
 
     }
+
+    public function getPermissoesUsuario($idUser){
+
+        $query = "SELECT * FROM autorizacoes WHERE USUARIO_ID = ?";
+        $stmt = Conexao::getConn()->prepare($query);
+        $stmt->bindValue(1, $idUser);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+
+            $resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+			return $resultado;
+        }
+    }
 }

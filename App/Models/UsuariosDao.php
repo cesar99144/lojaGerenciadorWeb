@@ -51,4 +51,21 @@ class UsuariosDao extends Conexao{
 			return $resultado['USUARIO_ID'];
         }
     }
+
+    public function deletarUsuario($id){
+
+        $query = "DELETE FROM usuarios where USUARIO_ID = ?";
+        $stmt = Conexao::getConn()->prepare($query);
+        $stmt->bindValue(1, $id);
+
+        if($stmt->execute()){
+
+            return "Sucesso";
+
+        }else{
+
+            return "Erro";
+        }
+    }
+
 }

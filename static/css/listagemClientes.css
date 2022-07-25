@@ -1,0 +1,13 @@
+.topoDadosPagina{
+
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.tituloPagina{
+
+    font-family: NunitoExtrabold;
+    margin-top: 10px;
+    color: #961517;
+}

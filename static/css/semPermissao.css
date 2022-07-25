@@ -1,0 +1,35 @@
+@font-face {
+    font-family: NunitoExtrabold;
+    src: url(../fonts/nunito/Nunito-ExtraBold.ttf)
+}
+
+
+#containerResultado{
+
+    border: 1px solid;
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    padding: 20px;
+    background-color: #9c1d1c;
+    color: white;
+    font-family: NunitoExtrabold;
+    text-align: center;
+}
+
+#containerBotao{
+
+    width: 50%;
+    margin: auto;
+    margin-top: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+#containerBotao > a{
+
+    background-color: teal;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}

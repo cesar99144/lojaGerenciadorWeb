@@ -18,6 +18,7 @@ header{
     background: -webkit-linear-gradient(left, #9c1d1c, #c0392b);
     height: 50px;
     padding-left: 40px;
+    padding-right: 20px;
     display: flex !important;
     justify-content: space-between !important;
 }
@@ -28,6 +29,23 @@ header{
     color: white;
     padding: 10px;
     font-size: 16pt;
+}
+
+#dadosUserLogado{
+
+    font-family: NunitoExtrabold;
+    color: white;
+    padding: 10px;
+    font-size: 11pt;
+    margin-top: 5px;
+}
+
+#botaoLogout{
+
+    background-color: black;
+    padding: 10px;
+    text-decoration: none;
+    margin-left: 10px;
 }
 
 #subNavMenu{

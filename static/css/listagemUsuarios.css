@@ -1,0 +1,28 @@
+#areaTopoPagina{
+
+    display: flex !important;
+    margin-bottom: 50px;
+}
+
+#areaPesquisa{
+
+    display: flex !important;
+    width: 80%;
+}
+
+#areaPesquisa > input{
+
+    width: 30% !important;
+    
+}
+
+#areaPesquisa > button{
+
+    border-radius: 0px;
+    
+}
+
+.w3-button{
+
+    border-radius: 0px !important;
+}

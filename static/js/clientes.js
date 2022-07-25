@@ -1,49 +1,26 @@
-// var checados = [];
+function cadastrarCliente(){
 
-function gerarArrayChecks(){
-
-    var checados = [];
-
-    // $(document).ready(function() {
-    //     $(".checkOpcao").click(function(e) {
-    //         $.each($("input[name='checkOpcao[]']:checked"), function(){            
-    //             checados.push($(this).val());
-    //         });
-    //     });
-    // });
-
-    $("input:checked").each(function(){
-        // console.log($(this).attr("id"));
-        checados.push($(this).attr("id"));
-    });
-
-    // console.log(checados);
-
-    return checados;
-}
-
-function cadastrarUsuarios(){
-
-    var nome = document.getElementById("nomeUsuario").value;
-    var nomeLogin = document.getElementById("nomeLoginUser").value;
-    var senhaUsuario = document.getElementById("senhaUsuario").value;
-    var ativoUsuario = document.getElementById("ativoUsuario").value;
-
-    var opcoesMarcadas = gerarArrayChecks();
-
-    console.log(opcoesMarcadas);
-
-    // console.log(checados);
+    var nome = document.getElementById("nomeCliente").value;
+    var celular = document.getElementById("celularCliente").value;
+    var email = document.getElementById("emailCliente").value;
+    var endereco = document.getElementById("enderecoCliente").value;
+    var bairro = document.getElementById("bairroCliente").value;
+    var uf = document.getElementById("ufCliente").value;
+    var cidade = document.getElementById("cidadeCliente").value;
+    var ativo = document.getElementById("ativoCliente").value;
 
     $.ajax({
-        url: "/usuarios/create",
+        url: "/clientes/create",
         type:"POST",
         data:{
-            nomeUser: nome,
-            loginUser: nomeLogin,
-            senhaUser: senhaUsuario,
-            statusUser: ativoUsuario,
-            opcoesMarcadas
+            nomeCliente: nome,
+            celularCliente: celular,
+            emailCliente: email,
+            enderecoCliente: endereco,
+            bairroCliente: bairro,
+            ufCliente: uf,
+            cidadeCliente: cidade,
+            ativoCliente: ativo,
             
         },
         success:function(response){
@@ -102,44 +79,32 @@ function cadastrarUsuarios(){
 
 function limparCampos(){
 
-    document.getElementById("nomeUsuario").value = "";
-    document.getElementById("nomeLoginUser").value = "";
-    document.getElementById("senhaUsuario").value = "";
+    document.getElementById("nomeCliente").value = "";
+    document.getElementById("celularCliente").value = "";
+    document.getElementById("emailCliente").value = "";
+    document.getElementById("enderecoCliente").value = "";
+    document.getElementById("bairroCliente").value = "";
+    document.getElementById("ufCliente").value = "";
+    document.getElementById("cidadeCliente").value = "";
 
-    const clist = document.getElementsByTagName("input");
-
-    for (const el of clist) {
-        el.checked = false;
-    }
 }
 
-function carregarListaUsuarios(){
+function carregarListaClientes(){
 
     $.ajax({
-        url: "/usuarios/listaTodosUsuarios",
+        url: "/clientes/listarClientes",
         type:"GET",
 
         success:function(response){
 
-            limparLista();
-
             dados = JSON.parse(response);
+
+            limparLista();
 
             for(var i = 0; i < dados.length; i++){
 
-                var ativo;
-
-                if(dados[i].ATIVO == 'S'){
-
-                    ativo = "Sim";
-
-                }else{
-
-                    ativo = "Não";
-                }
-
                 var $wrapper = document.querySelector('#containerDadosTable');
-                var trLista = '<tr class="itemLista"><td>'+dados[i].NOME_COMPLETO+'</td><td>'+dados[i].LOGIN+'</td><td>'+ativo+'</td><td><button onclick="deleteUsuario('+dados[i].USUARIO_ID+')" class="w3-button w3-theme w3-margin-top"><i class="fas fa-user-times"></i></button>&nbsp;</td></tr>';
+                var trLista = '<tr class="itemLista"><td>'+dados[i].nome+'</td><td>'+dados[i].celular+'</td><td>'+dados[i].email+'</td><td>'+dados[i].endereco+'</td><td><button onclick="deleteCliente('+dados[i].idCliente+')" class="w3-button w3-theme w3-margin-top"><i class="fas fa-user-times"></i></button>&nbsp;&nbsp;<a href="/clientes/edit/'+dados[i].idCliente+'" class="w3-button w3-theme w3-margin-top"><i class="fas fa-edit"></i></a></td></tr>';
                 
                 // Insere o texto antes do conteúdo atual do elemento
                 $wrapper.insertAdjacentHTML('afterbegin', trLista);
@@ -161,10 +126,10 @@ function limparLista(){
     }
 }
 
-function deleteUsuario(id){
+function deleteCliente(id){
 
     $.ajax({
-        url: "/usuarios/delete/"+id,
+        url: "/clientes/delete/"+id,
         type:"GET",
 
         success:function(response){
@@ -187,7 +152,7 @@ function deleteUsuario(id){
                         onClick: function(){} // Callback after click
                     }).showToast();
 
-                    carregarListaUsuarios()
+                    carregarListaClientes();
 
                 break;
 
@@ -239,7 +204,86 @@ function deleteUsuario(id){
     });
 }
 
+function atualizarCliente(){
+
+    var id = document.getElementById("codigoCliente").value;
+
+    var nome = document.getElementById("nomeCliente").value;
+    var celular = document.getElementById("celularCliente").value;
+    var email = document.getElementById("emailCliente").value;
+    var endereco = document.getElementById("enderecoCliente").value;
+    var bairro = document.getElementById("bairroCliente").value;
+    var uf = document.getElementById("ufCliente").value;
+    var cidade = document.getElementById("cidadeCliente").value;
+
+    $.ajax({
+        url: "/clientes/update/"+id,
+        type:"POST",
+        data:{
+            nomeCliente: nome,
+            celularCliente: celular,
+            emailCliente: email,
+            enderecoCliente: endereco,
+            bairroCliente: bairro,
+            ufCliente: uf,
+            cidadeCliente: cidade,
+            
+        },
+        success:function(response){
+
+            switch(response){
+
+                case "Sucesso":
+
+                    Toastify({
+                        text: "Atualizado com sucesso",
+                        destination: "",
+                        newWindow: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "center", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        // className: "info",
+                        style: {
+                        background: "linear-gradient(to right, green, green)",
+                        },
+                        onClick: function(){} // Callback after click
+                    }).showToast();
+
+
+                break;
+
+                case "Erro":
+
+                    Toastify({
+                        text: "Falha no cadastro, verifique os dados e tente novamente",
+                        destination: "",
+                        newWindow: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "center", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        // className: "info",
+                        style: {
+                        background: "linear-gradient(to right, green, green)",
+                        },
+                        onClick: function(){} // Callback after click
+                    }).showToast();
+
+                break;
+
+                default:
+
+                    alert(response)
+
+            }
+        },
+        error: function(response) {
+            alert("erro")
+        },
+    });
+}
+
 //Pesquisar dados table
+
 var filtro = document.getElementById('filtraDados');
 var tabela = document.getElementById('lista');
 filtro.onkeyup = function() {
