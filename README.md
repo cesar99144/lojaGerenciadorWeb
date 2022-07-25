@@ -17,7 +17,9 @@ Projeto de exemplo de uma loja virtual
 
 **Front-end:** Html, css, javascript, jQuery e Ajax
 
-**Back-end:** PHP
+**Back-end:** PHP ( MVC, POO, PDO E AUTOLOAD)
+
+**Banco-de-dados:** MySql
 
 
 ## Rodando localmente
@@ -32,6 +34,12 @@ Instale as dependências
 
 ```bash
   composer install
+```
+
+Importe o arquivo sql
+
+```bash
+  Importar o arquivo teste.sql que está na pasta principal do projeto, para o seu servidor de banco de dados 
 ```
 
 Inicie o servidor
