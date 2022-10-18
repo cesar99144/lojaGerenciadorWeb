@@ -13,8 +13,8 @@ class Usuarios extends BaseControllers{
         
         $this->modelUsuariosDao = $this->model('UsuariosDao');
         $this->modelUsuarios = $this->model('Usuario');
-        $this->auth = new Auth();
-        $this->auth->checkLogin();
+        // $this->auth = new Auth();
+        // $this->auth->checkLogin();
     }
 
     public function index(){
